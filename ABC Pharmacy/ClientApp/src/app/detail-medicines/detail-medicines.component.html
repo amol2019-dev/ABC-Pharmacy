@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-3">
+    <h3>Medicines Detail</h3>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-primary" routerLink="/list">Back</button>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <td class="font-weight-bold">Full Name:</td>
+    <td>{{medicinesDetail?.fullName}}</td>
+  </tr>
+  <tr>
+    <td class="font-weight-bold">Brand:</td>
+    <td>{{medicinesDetail?.brand}}</td>
+  </tr>
+  <tr>
+    <td class="font-weight-bold">Quantity:</td>
+    <td>{{medicinesDetail?.quantity}}</td>
+  </tr>
+  <tr>
+    <td class="font-weight-bold">Price:</td>
+    <td>{{medicinesDetail?.price}}</td>
+  </tr>
+  <tr>
+    <td class="font-weight-bold">Notes:</td>
+    <td>{{medicinesDetail?.notes}}</td>
+  </tr>
+  <tr>
+    <td class="font-weight-bold">Expiry Date:</td>
+    <td>{{medicinesDetail?.expiryDate|date:'MM-dd-yyyy'}}</td>
+  </tr>
+</table>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()">Update Note</button>
+
+<div class="modal fade" #notesModel id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <input type="text" class="form-control" id="notes" placeholder="Enter Notes" [(ngModel)]="notes" name="notes">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btnClose"  data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btnSave" (click)="updateNotes()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+.quantityLessThan10{
+    background: yellow;
+}
+.expiryDateLessThan30 {
+  background: red;
+}

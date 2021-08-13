@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-12">
+    <h4>List Of Medicines</h4>
+  </div>
+</div>
+<div class="row ">
+  <div class="col-8 form-inline">
+    <label for="fullName" class="col-sm-4">Search By Name</label>
+    <input type="text" class="form-control col-sm-4" id="search" placeholder="Search Medicine" #searchInput>
+    <button type="button" class="btn btn-primary col-sm-4" (click)="search(searchInput.value)">Search</button>
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-primary float-right" routerLink="/add">Add</button>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Expiry Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medicine of medicinesList" [routerLink]="['/detail', medicine?.id]" [ngClass]="{'quantityLessThan10': medicine.quantity < 10, 'expiryDateLessThan30': getThirtyDaysBackDate(medicine.expiryDate) < 30 }">
+        <th>
+          {{medicine.id}} - {{medicine.fullName}}
+        </th>
+        <td>{{medicine.brand}}</td>
+        <td>{{medicine.price}}</td>
+        <td>{{medicine.quantity}}</td>
+        <td>{{medicine.expiryDate | date:'MM/dd/yyyy'}}</td>
+      </tr>
+      <tr *ngIf="medicinesList.length==0"><td>No Data Found.</td></tr>
+    </tbody>
+  </table>
+</div>
